@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proxy Demo</title>
+<script>
+window.onload = function() {
+    // 代理目标网址
+    var targetURL = 'https://ioszy9.cydias.top/api1';
+
+    // 创建一个 XMLHttpRequest 对象
+    var xhr = new XMLHttpRequest();
+
+    // 设置请求
+    xhr.open('POST', targetURL, true);
+
+    // 监听请求状态变化
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                // 请求成功，将返回的内容显示在页面上
+                document.getElementById('response').innerText = xhr.responseText;
+            } else {
+                // 请求失败，显示错误信息
+                document.getElementById('response').innerText = 'Error: ' + xhr.status;
+            }
+        }
+    };
+
+    // 发送请求
+    xhr.send();
+};
+</script>
+</head>
+<body>
+<div id="response">Loading...</div>
+</body>
+</html>
